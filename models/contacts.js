@@ -87,7 +87,7 @@ const updateContact = async (contactId, body) => {
 	return updatedContact
 }
 
-// Оновлюємо та збнрігаємо контакти
+// Оновлюємо та зберігаємо контакти
 
 module.exports = {
   listContacts,
