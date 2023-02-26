@@ -9,21 +9,21 @@
 4. Експортуємо файл с БД контактів у форматі JSON у нашу БД на Compass.
 5. Встановлюємо зв'язок між додатком та БД на Compass (шлях з назвою колекції прописуємо у файлі . env).
 6. Заповнюємо файли .env.example та .gitignore
-7. Архитектура додатку
- 7.1.Створюємо наступні папки:
-  - models - типові шаблони інтерфейса;
-  - middelwares - (корисна допомога) - валідація (загальний імпорт через файл index);
-  - helpers - типові форми, які повторюються (загальний імпорт через файл index);
-  - controllers - логика усіх типів запросів (загальний імпорт через файл index).
-  7.2 Експортуємо дані в файл routes/api/contacts - де описуємо форму та шлях усіх типів HTTP-запиту
-  - GET/api/contacts - вивід усіх контактів (змінна getAll);
-  - GET/api/contacts/contactId - пошук контакту по id (змінна getById);
-  - POST/api/contacts - добавляємо новий контакт (змінна addContact);
-  - DELETE/api/contacts/contactId - видалення контакту по id (змінна removeContact);
-  - PUT/api/contacts/contactId - оновлення контакту по id (змінна upddateContact);
-  - PATCH/api/contacts/contactId/favorite - зміна значення поля favorite контакту по id (змінна setFavorite);
-  7.3 Експортуємо дані в кореневий файл api - де описуємо загальну інформацію.
-  7.4 Експортуємо дані в кореневий файл server - де робимо підключення наших HTTP-запитів до БД MongoDB Compass.
+7. Архитектура додатку.
+ + Створюємо наступні папки:
+      - models - типові шаблони інтерфейса;
+      - middelwares - (корисна допомога) - валідація (загальний імпорт через файл index);
+      - helpers - типові форми, які повторюються (загальний імпорт через файл index);
+      - controllers - логика усіх типів запросів (загальний імпорт через файл index).
+  + Експортуємо дані в файл routes/api/contacts - де описуємо форму та шлях усіх типів HTTP-запиту
+      - GET/api/contacts - вивід усіх контактів (змінна getAll);
+      - GET/api/contacts/contactId - пошук контакту по id (змінна getById);
+      - POST/api/contacts - добавляємо новий контакт (змінна addContact);
+      - DELETE/api/contacts/contactId - видалення контакту по id (змінна removeContact);
+      - PUT/api/contacts/contactId - оновлення контакту по id (змінна upddateContact);
+      - PATCH/api/contacts/contactId/favorite - зміна значення поля favorite контакту по id (змінна setFavorite);
+  + Експортуємо дані в кореневий файл api - де описуємо загальну інформацію.
+  + Експортуємо дані в кореневий файл server - де робимо підключення наших HTTP-запитів до БД MongoDB Compass.
 8. Переверіямо працездатність додатку через HTTP-запити у Postman
 
 ### Команди:
