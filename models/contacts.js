@@ -1,3 +1,57 @@
+
+const {Schema, model} = require("mongoose")
+const Joi = require("joi");
+
+const {handleSaveErrors} = require("../helpers")
+
+const contactSchema = new Schema({
+    name: {
+        type: String,
+        required: [true, 'Set name for contact'],
+    },
+    email: {
+        type: String,
+        
+    },
+    phone: {
+        type: String,
+        
+    },
+    favorite: {
+        type: Boolean,
+        default: false,
+    },
+    
+}, { versionKey: false })
+    
+
+contactSchema.post("save", handleSaveErrors)
+
+const addSchema = Joi.object({
+    name: Joi.string().required(),
+    email: Joi.string().required(),
+    phone: Joi.string().required(),
+      
+})
+
+const updateFavoriteSchema = Joi.object({
+    favorite: Joi.boolean().required(),
+})
+
+const schemas = {
+    addSchema,
+    updateFavoriteSchema,
+}
+
+const Contact = model("contact", contactSchema);
+
+module.exports = {
+    Contact,
+    schemas,
+};
+
+// Прописуємо шаблон інтерфейсу БД та робимо перевірку дотримання шаблону через Joi та Mongoose
+
 const fs = require('fs/promises')
 const { nanoid } = require('nanoid')
 const path = require('path')
@@ -97,3 +151,4 @@ module.exports = {
   updateContact,
 }
 // експортуємо змінні де listContacts - список контактів. getContactById - пошук контакту по id. removeContact - видалення контакту, addContact - додавання контакту, updateContact - оновлення контакту.
+

@@ -1,5 +1,7 @@
 {
-  "name": "hw02",
+
+  "name": "hw03-mongodb",
+
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -12,11 +14,14 @@
     "colors": "^1.4.0",
     "cors": "2.8.5",
     "cross-env": "7.0.3",
+    "dotenv": "^16.0.3",
     "express": "4.17.1",
-    "joi": "^17.8.1",
+
+    "joi": "^17.8.3",
+    "mongoose": "^6.10.0",
     "morgan": "1.10.0",
-    "nanoid": "^3.3.4",
-    "path": "^0.12.7"
+    "nanoid": "^3.3.4"
+
   },
   "devDependencies": {
     "eslint": "7.19.0",

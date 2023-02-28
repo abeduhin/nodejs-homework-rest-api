@@ -1,11 +1,26 @@
-const express = require('express')
+
+const express = require("express");
+
+const ctrl = require('../../controllers/contacts')
+
+const {validateBody} = require("../../middlewares");
+
+const {schemas} = require("../../models/contacts")
+
+const {ctrlWrapper} = require("../../helpers")
+
+const router = express.Router()
+
+router.get("/", ctrlWrapper(ctrl.getAll))
+
+
 const { listContacts, getContactById, addContact, removeContact, updateContact } = require('../../models/contacts')
 const { contactValidator } = require('./../../utils/validators/validator')
 
 // Імпортуємо необхідні змінні
 
 
-const router = express.Router()
+
 // Підключаємо роутер
 
 router.get('/', async (_req, res, _next) => {
@@ -65,6 +80,17 @@ router.put('/:contactId', async (req, res, _next) => {
 		res.status(404).json({ message: 'Not found' })
 	}
 })
-// Прописуємо шлях роутеру при  put запиті на змінення елементу. прописуємо умову. щоб усі поля були зповнені та статус успішного віконання та статус помилки.
+// Прописуємо шлях роутеру при  put запиті на змінення елементу. прописуємо умову. щоб усі поля були зповнені та статус успішного віконання та статус помилки.master
 
-module.exports = router
+router.get("/:contactId", ctrlWrapper(ctrl.getById))
+
+router.post("/", validateBody(schemas.addSchema), ctrlWrapper(ctrl.addContact))
+
+router.put("/:contactId", validateBody(schemas.addSchema), ctrlWrapper(ctrl.updateContact))
+
+router.patch("/:contactId/favorite", validateBody(schemas.updateFavoriteSchema), ctrlWrapper(ctrl.setFavorite))
+
+router.delete("/:contactId", ctrlWrapper(ctrl.removeContact))
+
+module.exports = router;
+// Описувємо форми HTTP запитів
