@@ -15,9 +15,12 @@ router.get("/", ctrlWrapper(ctrl.getAll))
 
 router.get("/:contactId", ctrlWrapper(ctrl.getById))
 
+
 router.post("/", validateBody(schemas.addSchema), ctrlWrapper(ctrl.addContact))
 
+
 router.put("/:contactId", validateBody(schemas.addSchema), ctrlWrapper(ctrl.updateContact))
+
 
 router.patch("/:contactId/favorite", validateBody(schemas.updateFavoriteSchema), ctrlWrapper(ctrl.setFavorite))
 
