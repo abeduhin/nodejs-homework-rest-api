@@ -3,7 +3,7 @@
 Для виконання домашньої роботи №4 створюємо гілку hw04-auth з гілки master.
 
 ### Порядок виконання
-1. Встановлюємо додатково пакети bcryptjs, jsonwebtoken, mongoose-paginate, mongoose-paginate-v2, passport, passport-jwt. 
+1. Встановлюємо додатково пакети: bcryptjs, jsonwebtoken, mongoose-paginate, mongoose-paginate-v2, passport, passport-jwt. 
 2. Доповнюємо файли .env.example та .gitignore (SECRET_KEY).
 3. Створюємо нову колекцію users на MongoDB Compass.
 4. Архитектура додатку.
