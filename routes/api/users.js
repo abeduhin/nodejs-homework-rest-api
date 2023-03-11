@@ -1,6 +1,6 @@
 const express = require("express");
 
-const {authenticate, validateBody} = require("../../middlewares");
+const {authenticate, validateBody, upload} = require("../../middlewares");
 
 const { ctrlWrapper } = require("../../helpers");
 
@@ -21,5 +21,14 @@ router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent))
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout))
 
 router.patch('/:id/subscription', authenticate, validateBody(schemas.subscriptionSchema), ctrlWrapper(ctrl.subscription))
+
+router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar))
+// upload.single - коли передаємо 1 зображення (файл).
+
+// router.patch("/avatars", authenticate, upload.fields({name: "avatar", maxCount; 1}, {name: "subavatar", maxCount; 2}), ctrlWrapper(ctrl.updateAvatar))
+// upload.fields - коли передаємо 2 зображення (файла).
+
+// router.patch("/avatars", authenticate, upload.array("avatar", 8), ctrlWrapper(ctrl.updateAvatar))
+// upload.array - коли передаємо багато зображень (файлів).
 
 module.exports = router;
