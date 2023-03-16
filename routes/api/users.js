@@ -20,6 +20,10 @@ router.get("/current", authenticate, ctrlWrapper(ctrl.getCurrent))
 
 router.get("/logout", authenticate, ctrlWrapper(ctrl.logout))
 
+router.get("/verify/:verificationToken", ctrlWrapper(ctrl.verifyEmail))
+
+router.post("/verify", validateBody(schemas.verifyEmailSchema), ctrlWrapper(ctrl.resendEmail))
+
 router.patch('/:id/subscription', authenticate, validateBody(schemas.subscriptionSchema), ctrlWrapper(ctrl.subscription))
 
 router.patch("/avatars", authenticate, upload.single("avatar"), ctrlWrapper(ctrl.updateAvatar))
